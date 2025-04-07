@@ -1,0 +1,27 @@
+<div class="container mt-4">
+    <h3 class="text-center">Add New Transaction</h3>
+    <form (ngSubmit)="addTransaction()" #txForm="ngForm">
+      <div class="mb-3">
+        <label for="title" class="form-label">Title</label>
+        <input type="text" id="title" class="form-control" [(ngModel)]="transaction.title" name="title" required>
+      </div>
+  
+      <div class="mb-3">
+        <label for="amount" class="form-label">Amount</label>
+        <input type="number" id="amount" class="form-control" [(ngModel)]="transaction.amount" name="amount" required>
+      </div>
+  
+      <div class="mb-3">
+        <label for="category" class="form-label">Category</label>
+        <input type="text" id="category" class="form-control" [(ngModel)]="transaction.category" name="category" required>
+      </div>
+  
+      <div class="mb-3">
+        <label for="date" class="form-label">Date</label>
+        <input type="date" id="date" class="form-control" [(ngModel)]="transaction.date" name="date" required>
+      </div>
+  
+      <button class="btn btn-primary" type="submit" [disabled]="txForm.invalid">Add Transaction</button>
+    </form>
+  </div>
+  
