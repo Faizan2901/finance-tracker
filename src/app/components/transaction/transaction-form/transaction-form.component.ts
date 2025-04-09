@@ -28,7 +28,11 @@ export class TransactionFormComponent {
           alert('Transaction added successfully!');
           this.router.navigate(['/transactions']);
         },
-        error: (err) => console.error('Error adding transaction', err)
+        error: (err) => {
+          alert(err.error)
+          this.router.navigate(['/set-budget'])
+        }
+        
       }
     )
   }

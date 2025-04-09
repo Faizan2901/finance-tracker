@@ -26,17 +26,22 @@ export class LoginComponent implements OnInit {
     });
   }
 
-  login(){
-    this.authService.login(this.loginForm.value).subscribe(
-      (token)=>{
-        this.authService.saveToken(token);
-        alert('Login Successful!');
+  login() {
+    this.authService.login(this.loginForm.value).subscribe({
+      next: (res) => {
+        console.log(res);
+        
+        this.authService.saveToken(res.token);
+        alert(res.message); 
         this.router.navigate(['/dashboard']);
-        },(error)=>{
-        alert('Oops something went wrong')
+      },
+      error: (err) => {
+        alert(err.error.message);
       }
-    );
+    });
   }
+  
+  
   
 
 }

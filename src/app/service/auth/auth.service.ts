@@ -12,11 +12,11 @@ export class AuthService {
   private apiUrl='http://localhost:8080/api/auth';
 
   login(credentials: any): Observable<any> {
-    return this.http.post(`${this.apiUrl}/login`,credentials,{responseType: 'text'});
+    return this.http.post<any>(`${this.apiUrl}/login`,credentials);
   }
 
   register(user: any): Observable<any>{
-    return this.http.post(`${this.apiUrl}/register`,user,{responseType: 'text'});
+    return this.http.post<any>(`${this.apiUrl}/register`,user);
   }
 
   saveToken(token:string){

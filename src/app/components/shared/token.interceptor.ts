@@ -1,21 +1,16 @@
-import { HttpEvent, HttpHandler, HttpInterceptor, HttpRequest } from "@angular/common/http";
+import { HttpEvent, HttpHandler, HttpInterceptor, HttpInterceptorFn, HttpRequest } from "@angular/common/http";
 import { Observable } from "rxjs";
 
-export class TokenInterceptor implements HttpInterceptor{
-
-    intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-        const token=localStorage.getItem('token');
-
-        if(token){
-            req=req.clone({
-                setHeaders: {
-                    Authorization : `Bearer ${token}`
-                }
-            })
+export const tokenInterceptor: HttpInterceptorFn = (req, next) => {
+    const token = localStorage.getItem('token');
+  
+    if (token) {
+      req = req.clone({
+        setHeaders: {
+          Authorization: `Bearer ${token}`
         }
-        
-        return next.handle(req);
-
+      });
     }
-    
-}
+  
+    return next(req);
+  };

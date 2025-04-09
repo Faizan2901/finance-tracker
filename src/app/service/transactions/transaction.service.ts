@@ -12,11 +12,11 @@ export class TransactionService {
   http=inject(HttpClient);
 
   getAllTransactions(): Observable<any[]>{
-    return this.http.get<any[]>(`${this.baseUrl}/transactions`);
+    return this.http.get<any[]>(`${this.baseUrl}`);
   }
 
   addTransaction(transaction:any){
-    return this.http.post(`${this.baseUrl}/transaction`,transaction);
+    return this.http.post(`${this.baseUrl}`,transaction);
   }
   
 }
