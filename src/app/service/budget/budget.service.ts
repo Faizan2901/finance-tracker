@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
+import { Budget } from '../../model/budget.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -16,6 +17,10 @@ export class BudgetService {
 
   addBudget(budget:any){
     return this.http.post(`${this.baseUrl}`,budget);
+  }
+
+  updateBudget(updateBudget: Budget) {
+    return this.http.post(`${this.baseUrl}/update-budget`,updateBudget);
   }
   
 }
